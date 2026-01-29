@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import emailjs from "@emailjs/browser";
 import { PageTransition } from "@/components/PageTransition";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import { Button } from "@/components/Button";
@@ -39,6 +40,11 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init("xkWDVYc2UdhA31e9M"); // Get this from emailjs.com
+  }, []);
+
   const {
     register,
     handleSubmit,
@@ -51,20 +57,38 @@ export default function Contact() {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    reset();
+    try {
+      await emailjs.send(
+        "service_y6hd961", // Get from emailjs.com
+        "template_xubqw2h", // Get from emailjs.com
+        {
+          from_name: data.name,
+          from_email: data.email,
+          to_email: "josephpaul200416@gmail.com",
+          subject: data.subject,
+          message: data.message,
+        }
+      );
 
-    toast({
-      title: "Message sent successfully!",
-      description: "I'll get back to you as soon as possible.",
-    });
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      reset();
 
-    // Reset success state after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+      toast({
+        title: "Message sent successfully!",
+        description: "I'll get back to you as soon as possible.",
+      });
+
+      // Reset success state after 5 seconds
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      setIsSubmitting(false);
+      console.error("Email send failed:", error);
+      toast({
+        title: "Error sending message",
+        description: "Please try again later or contact me directly.",
+      });
+    }
   };
 
   return (
