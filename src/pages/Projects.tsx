@@ -81,18 +81,18 @@ const projects: Project[] = [
   //   github: "https://github.com",
   //   features: ["End-to-end encryption", "Offline support", "Markdown editor", "Secure sharing"],
   // },
-  // {
-  //   id: 6,
-  //   title: "TaskFlow",
-  //   description: "Kanban-style project management with team collaboration.",
-  //   longDescription: "A modern project management tool featuring Kanban boards, sprint planning, time tracking, and team collaboration features. Built with a focus on developer workflows.",
-  //   image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&q=80",
-  //   category: ["web", "fullstack"],
-  //   tags: ["Next.js", "Prisma", "PostgreSQL", "tRPC"],
-  //   github: "https://github.com",
-  //   live: "https://example.com",
-  //   features: ["Kanban boards", "Sprint planning", "Time tracking", "Team collaboration"],
-  // },
+  {
+    id: 6,
+    title: "TaskFlow",
+    description: "Kanban-style project management with team collaboration.",
+    longDescription: "A modern project management tool featuring Kanban boards, sprint planning, time tracking, and team collaboration features. Built with a focus on developer workflows.",
+    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&q=80",
+    category: ["web", "fullstack"],
+    tags: ["Next.js", "Prisma", "PostgreSQL", "tRPC"],
+    github: "https://github.com",
+    live: "https://example.com",
+    features: ["Kanban boards", "Sprint planning", "Time tracking", "Team collaboration"],
+  },
 ];
 
 const filters: { value: ProjectCategory; label: string }[] = [
