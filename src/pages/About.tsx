@@ -4,8 +4,11 @@ import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/Ani
 import { 
   Code2, Shield, Database, Cloud, 
   Briefcase, GraduationCap, Award,
-  Terminal, Globe, Lock
+  Terminal, Globe, Lock, Cpu, Zap
 } from "lucide-react";
+
+// Placeholder image - Replace with your actual photo URL
+const PROFILE_IMAGE = "/profile.jpeg";
 
 const skills = [
   { name: "Frontend Development", icon: Code2, items: ["React", "TypeScript", "Next.js", "Tailwind CSS"] },
@@ -65,10 +68,10 @@ export default function About() {
   return (
     <PageTransition>
       {/* Header */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="pt-20 pb-10 relative overflow-hidden">
         <div className="absolute inset-0 cyber-grid opacity-20" />
         <div className="section-container relative z-10">
-          <AnimatedSection className="text-center max-w-3xl mx-auto">
+          <AnimatedSection className="text-center max-w-3xl mx-auto mb-10">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               About <span className="gradient-text">Me</span>
             </h1>
@@ -76,6 +79,104 @@ export default function About() {
               I'm Joseph Paul, an MCA student with a deep passion for web development and cybersecurity.
               I believe in writing clean, secure code that makes a difference.
             </p>
+          </AnimatedSection>
+
+          {/* --- NEW INTERACTIVE IMAGE SECTION --- */}
+          <AnimatedSection className="flex justify-center pb-10">
+            <motion.div 
+              className="relative w-full max-w-[400px] aspect-square flex items-center justify-center group"
+              initial="initial"
+              whileHover="hover"
+            >
+              {/* Animated Background Glow */}
+              <div className="absolute inset-0 bg-primary/20 rounded-full blur-[80px] group-hover:bg-primary/30 transition-colors duration-500" />
+              
+              {/* Rotating Border Rings */}
+              <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full border border-dashed border-primary/20"
+              />
+              <motion.div 
+                animate={{ rotate: -360 }}
+                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-4 rounded-full border border-dotted border-primary/20"
+              />
+
+              {/* Main Profile Image */}
+              <div className="relative z-10 w-64 h-64 rounded-full p-2 bg-background/50 backdrop-blur-sm border border-primary/20">
+                <div className="w-full h-full rounded-full overflow-hidden relative">
+                  <img 
+                    src={PROFILE_IMAGE} 
+                    alt="Joseph Paul" 
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  />
+                  {/* Cyber Overlay effect */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-50 group-hover:opacity-0 transition-opacity" />
+                </div>
+              </div>
+
+              {/* Floating Badge 1 - Top Right */}
+              <motion.div
+                variants={{
+                  initial: { x: 0, y: 0 },
+                  hover: { x: 40, y: -20 }
+                }}
+                className="absolute top-10 right-10 z-20"
+              >
+                <motion.div 
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="bg-card/90 backdrop-blur-md border border-primary/30 p-3 rounded-xl shadow-xl flex items-center gap-3"
+                >
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Shield className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground font-medium">Security</p>
+                    <p className="text-sm font-bold">Ethical Hacker</p>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Floating Badge 2 - Bottom Left */}
+              <motion.div
+                variants={{
+                  initial: { x: 0, y: 0 },
+                  hover: { x: -40, y: 20 }
+                }}
+                className="absolute bottom-10 left-10 z-20"
+              >
+                <motion.div 
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  className="bg-card/90 backdrop-blur-md border border-primary/30 p-3 rounded-xl shadow-xl flex items-center gap-3"
+                >
+                  <div className="p-2 bg-blue-500/10 rounded-lg">
+                    <Cpu className="w-5 h-5 text-blue-500" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground font-medium">Stack</p>
+                    <p className="text-sm font-bold">Full Stack Dev</p>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+               {/* Floating Badge 3 - Bottom Right (Small) */}
+               <motion.div
+                variants={{
+                  initial: { scale: 0.8, opacity: 0 },
+                  hover: { scale: 1, opacity: 1, x: 20 }
+                }}
+                className="absolute bottom-20 right-0 z-20"
+              >
+                <div className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-2">
+                  <Zap className="w-3 h-3 fill-current" />
+                  <span>Open to Work</span>
+                </div>
+              </motion.div>
+
+            </motion.div>
           </AnimatedSection>
         </div>
       </section>
