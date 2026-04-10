@@ -80,7 +80,7 @@ export default function Home() {
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </Link>
-                <LinkButton variant="outline" size="lg" href="/resume.pdf" external>
+                <LinkButton variant="outline" size="lg" href="/resume/joseph paul.pdf" external>
                   <Download className="h-4 w-4" />
                   Download CV
                 </LinkButton>
