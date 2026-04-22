@@ -246,58 +246,7 @@ export default function About() {
       </section>
 
       {/* Timeline */}
-      <section className="py-20 bg-card/50">
-        <div className="section-container">
-          <AnimatedSection className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Experience & Education</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              My journey in tech - from academics to real-world experience.
-            </p>
-          </AnimatedSection>
-
-          <div className="max-w-3xl mx-auto">
-            <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute left-8 top-0 bottom-0 w-px bg-border" />
-
-              <StaggerContainer className="space-y-8">
-                {experiences.map((exp, index) => (
-                  <StaggerItem key={index}>
-                    <div className="relative flex gap-6">
-                      {/* Icon */}
-                      <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        className="relative z-10 flex-shrink-0 w-16 h-16 rounded-2xl bg-card border border-border flex items-center justify-center shadow-lg"
-                      >
-                        <exp.icon className="h-6 w-6 text-primary" />
-                      </motion.div>
-
-                      {/* Content */}
-                      <motion.div
-                        whileHover={{ x: 4 }}
-                        className="flex-1 p-6 rounded-2xl bg-card border border-border hover:border-primary/20 transition-all"
-                      >
-                        <div className="flex flex-wrap items-center gap-2 mb-2">
-                          <h3 className="font-semibold text-lg">{exp.title}</h3>
-                          <span className="px-2 py-0.5 text-xs rounded-full bg-primary/10 text-primary">
-                            {exp.period}
-                          </span>
-                        </div>
-                        <p className="text-primary font-medium text-sm mb-2">
-                          {exp.organization}
-                        </p>
-                        <p className="text-muted-foreground text-sm">
-                          {exp.description}
-                        </p>
-                      </motion.div>
-                    </div>
-                  </StaggerItem>
-                ))}
-              </StaggerContainer>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* removed parts #1 */}
 
       {/* Interests */}
       <section className="py-20">
